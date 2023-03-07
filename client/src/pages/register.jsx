@@ -1,12 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:3030/auth/register", {
+        username,
+        password,
+      });
+      alert("successfully registered!");
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="auth-container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Register</h2>
         <div className="form-group">
           <label htmlFor="username"> Username: </label>
