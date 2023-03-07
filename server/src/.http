@@ -1,4 +1,17 @@
+
+//register
+
 POST http://localhost:3030/auth/register
+Content-Type: application/json
+
+{
+    "username" : "eddyiiz",
+    "password" : "eddy"
+}
+################
+//login
+
+POST http://localhost:3030/auth/login
 Content-Type: application/json
 
 {
