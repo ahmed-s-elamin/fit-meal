@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { Home } from "./pages/home";
-import { Auth } from "./pages/auth";
+import { Register } from "./pages/register";
+import { Login } from "./pages/login";
 import { CreateRecipe } from "./pages/create-recipe";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Navbar } from "./components/navbar";
@@ -15,7 +16,8 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/create-recipe" element={<CreateRecipe />} />
           <Route path="/saved-recipes" element={<SavedRecipes />} />
         </Routes>
