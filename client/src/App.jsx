@@ -1,31 +1,23 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Write from "./pages/Write";
-import Home from "./pages/Home";
-import single from "./pages/Login";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-]);
+import "./App.css";
+import { Home } from "./pages/home";
+import { Auth } from "./pages/auth";
+import { CreateRecipe } from "./pages/create-recipe";
+import { SavedRecipes } from "./pages/saved-recipes";
 
 const App = () => {
   return (
-    <div>
-      <RouterProvider router={router} />
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/create-recipe" element={<CreateRecipe />} />
+          <Route path="/saved-recipes" element={<SavedRecipes />} />
+        </Routes>
+      </Router>
     </div>
   );
 };
