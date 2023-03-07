@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export const Login = () => {
@@ -23,7 +24,7 @@ export const Login = () => {
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
 
-      alert("successfully logged in!");
+      toast.success("Logged in");
       navigate("/");
     } catch (err) {
       console.error(err);

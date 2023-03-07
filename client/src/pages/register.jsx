@@ -16,7 +16,8 @@ export const Register = () => {
         username,
         password,
       });
-      alert("successfully registered!");
+
+      toast.success("Registered successfully");
       navigate("/login");
     } catch (err) {
       console.error(err);
