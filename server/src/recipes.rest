@@ -6,7 +6,7 @@ Content-Type: application/json
     "ingredients" : ["beef", "salt", "pepper"],
     "instructions" : "cook at high heat then baste it",
     "image" : "https://www.alamy.com/stock-photo-beef-steak-on-a-wooden-table-51216304.html?imageid=DADDC22B-3822-4078-89D9-4ED2EE90439A&p=47331&pn=1&searchId=8b6be38daa57a977a8b0e43ca13382f2&searchtype=0",
-    "cookTime" : "30",
+    "cookingTime" : "30",
     "userOwner" : "640749c577bbee0ea7b4cd8d"
 }
 
