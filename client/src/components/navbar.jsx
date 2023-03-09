@@ -12,7 +12,7 @@ export const Navbar = () => {
 
     window.localStorage.removeItem("userID");
     toast.success("logged out");
-    navigate("/login");
+    navigate("/");
   };
   return (
     <div className="navbar">
