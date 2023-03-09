@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export const CreateRecipe = () => {
   const userID = useGetUserID();
@@ -47,8 +48,8 @@ export const CreateRecipe = () => {
         }
       );
 
-      alert("Recipe Created");
-      //navigate("/");
+      toast.success("Recipe Created");
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
