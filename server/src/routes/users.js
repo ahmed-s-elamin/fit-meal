@@ -48,11 +48,12 @@ export const verifyToken = async (req, res, next) => {
 
   if (token) {
     jwt.verify(token, "secret", (err) => {
-      if (err) return res.sendStatus(403);
-
+      if (err) {
+        return res.sendStatus(403);
+      }
       next();
     });
   } else {
-    if (err) return res.sendStatus(403);
+    return res.sendStatus(403);
   }
 };
