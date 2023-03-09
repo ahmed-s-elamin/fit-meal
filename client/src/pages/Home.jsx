@@ -1,19 +1,34 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
+import { toast } from "react-toastify";
 
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
+  const [savedRecipes, setSavedRecipes] = useState([]);
+
   const userID = useGetUserID();
 
   useEffect(() => {
     fetchRecipes();
+    fetchSavedRecipes();
   }, []);
-
   const fetchRecipes = async () => {
     try {
       const response = await axios.get("http://localhost:3030/recipes");
       setRecipes(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchSavedRecipes = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3030/recipes/savedRecipes/ids/${userID}`
+      );
+      setSavedRecipes(response.data.savedRecipes);
+      //console.log(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -25,11 +40,15 @@ export const Home = () => {
         recipeID,
         userID,
       });
-      console.log(response);
+      //console.log(response);
+      setSavedRecipes(response.data.savedRecipes);
+      toast.success("Recipe Saved!");
     } catch (err) {
       console.error(err);
     }
   };
+
+  const isRecipeSaved = (id) => savedRecipes.includes(id);
 
   return (
     <div>
@@ -39,12 +58,17 @@ export const Home = () => {
           <li key={recipe._id}>
             <div>
               <h1>{recipe.name}</h1>
-              <button onClick={() => saveRecipe(recipe._id)}>Save</button>
+              <button
+                onClick={() => saveRecipe(recipe._id)}
+                disabled={isRecipeSaved(recipe._id)}
+              >
+                {isRecipeSaved(recipe._id) ? "Saved ✔️" : "Save"}
+              </button>
             </div>
             <div className="instructions">
               <p>{recipe.instructions}</p>
             </div>
-            <img src="{recipe.imageUrl}" alt="{recipe.name}" />
+            <img src={recipe.imageUrl} alt={recipe.name} />
             <p> Cooking Time: {recipe.cookingTime} (minutes)</p>
           </li>
         ))}
