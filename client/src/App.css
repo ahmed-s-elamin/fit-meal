@@ -126,3 +126,10 @@ p {
 .logout-btn:hover {
   color: rgb(204, 202, 202);
 }
+.create-recipe-btn {
+  margin-top: 5px;
+}
+
+.cancel-btn {
+  margin-top: 5px;
+}

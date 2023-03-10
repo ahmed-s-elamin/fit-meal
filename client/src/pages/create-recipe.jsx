@@ -110,7 +110,16 @@ export const CreateRecipe = () => {
           value={recipe.cookingTime}
           onChange={handleChange}
         />
-        <button type="submit">Create Recipe</button>
+        <button className="create-recipe-btn" type="submit">
+          Create Recipe
+        </button>
+        <button
+          className="cancel-btn"
+          type="button"
+          onClick={() => navigate("/")}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
