@@ -14,7 +14,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchRecipes();
-    fetchSavedRecipes();
+    if (cookies.access_token) fetchSavedRecipes();
   }, []);
   const fetchRecipes = async () => {
     try {
