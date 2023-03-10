@@ -54,6 +54,6 @@ export const verifyToken = async (req, res, next) => {
       next();
     });
   } else {
-    return res.sendStatus(403);
+    return res.sendStatus(401);
   }
 };
